@@ -4,31 +4,27 @@ import './index.css';
 
 // JSX (return single element)
 
+// setup vars
+const firstBook = {
+  title: 'When We Believed in Mermaids: A Novel',
+  author:'Barbara ONeal',
+  image: 'https://m.media-amazon.com/images/I/81FJvwYyqgL._AC_UL640_FMwebp_QL65_.jpg',
+}
+
 function BookList() {
   return <section className='booklist'> 
-    <Book />
-    <Book />
-    <Book />
-    <Book />
-    <Book />
+    <Book title = 'The Secrets We Keep: A gripping emotional page turner' author = 'Kate Hewitt' image = 'https://m.media-amazon.com/images/I/915IPRMVw1L._AC_UL640_FMwebp_QL65_.jpg'/>
+    <Book title = {firstBook.title} author = {firstBook.title} image = {firstBook.image}/>
   </section >;
 }
 
-const Book = () =>{
+const Book = (props) =>{
   return (
   <article className='book'>
-    <Image />
-    <Title />
-    <Author />
+    <img src = {props.image} alt="" />
+    <h1>{props.title}</h1>
+    <h4>{props.author}</h4>
   </article>)
 };
-
-const Image = () => <img src = "https://m.media-amazon.com/images/I/915IPRMVw1L._AC_UL640_FMwebp_QL65_.jpg" alt="" />
-
-const Title = () => <h1>The Secrets We Keep: A gripping emotional page turner</h1>
-
-const Author = () => <h4 style={{ color: '#617d98', fontSize: '1rem', marginTop: '0.25rem' }}>
-    Kate Hewitt
-  </h4>
 
 ReactDom.render(<BookList />, document.getElementById('root'));
